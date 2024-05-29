@@ -1,14 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv')
+const cors = require('cors');
 
 dotenv.config();
+
 const sequelize = require('./config/db');
 const Member = require('./models/Member');
 const { Op } = require('sequelize');
 const data = require('./data.json');
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 
 // sequelize.sync({ force: true }).then(() => {
